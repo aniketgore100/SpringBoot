@@ -10,5 +10,6 @@ public interface CorseServices {
 	public List<Courses> getCourses();
 	public Courses getCourse(Long Cid);
 	public Courses addCourse(Courses c);
-	public Courses delete(long delId);
+	public Courses update(Courses c);
+	public void deleteCo(long delId);
 }

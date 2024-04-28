@@ -1,72 +1,55 @@
 package com.springrest.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import jakarta.persistence.Entity;
+
+@Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Courses {
-	private long Id;
-	private String Title;
-	private String Desc;
-	
-	
-	
-	public Courses() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+    
+    @jakarta.persistence.Id
+    private long Id;
+    private String Title;
+    private String Description; // Renamed from Desc
+    
+    public Courses() {
+        super();
+    }
 
+    public Courses(long id, String title, String description) {
+        super();
+        Id = id;
+        Title = title;
+        Description = description;
+    }
 
+    public long getId() {
+        return Id;
+    }
 
-	public Courses(long id, String title, String desc) {
-		super();
-		Id = id;
-		Title = title;
-		Desc = desc;
-	}
+    public void setId(long id) {
+        Id = id;
+    }
 
+    public String getTitle() {
+        return Title;
+    }
 
+    public void setTitle(String title) {
+        Title = title;
+    }
 
-	public long getId() {
-		return Id;
-	}
+    public String getDescription() {
+        return Description;
+    }
 
+    public void setDescription(String description) {
+        Description = description;
+    }
 
-
-	public void setId(long id) {
-		Id = id;
-	}
-
-
-
-	public String getTitle() {
-		return Title;
-	}
-
-
-       
-	
-	
-	 
-	public void setTitle(String title) {
-		Title = title;
-	}
-
-
-
-	public String getDesc() {
-		return Desc;
-	}
-
-
-
-	public void setDesc(String desc) {
-		Desc = desc;
-	}
-
-
-
-	@Override
-	public String toString() {
-		return "Courses [Id=" + Id + ", Title=" + Title + ", Desc=" + Desc + "]";
-	}
-	
-	
-	
+    @Override
+    public String toString() {
+        return "Courses [Id=" + Id + ", Title=" + Title + ", Description=" + Description + "]";
+    }
 }

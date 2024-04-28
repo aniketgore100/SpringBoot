@@ -2,11 +2,15 @@ package com.springrest.demo.controller;
 
 import java.util.List;
 
+import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -41,8 +45,47 @@ public class MyController {
 		return this.service.addCourse(c);
 	}
 	
+	@PutMapping("/courses")
+	public Courses update(@RequestBody Courses c) {
+		return this.service.update(c);
+	}
+	
+	
 	@DeleteMapping("/courses/{Cid}")
-	public Courses delete(@PathVariable String Cid) {
-		return this.service.delete(Long.parseLong(Cid));
+	public ResponseEntity<HttpStatus>deleteCo(@PathVariable String Cid){
+		try {
+			this.service.deleteCo(Long.parseLong(Cid));
+			return new ResponseEntity<>(HttpStatus.OK);
+		}catch(Exception e) {
+			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
